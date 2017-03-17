@@ -1,7 +1,6 @@
 fn(1234) // "1,234"
 fn(1234456.12) // "1,234,456.12"
 
-
 function fn(str){
 	var arr = str.toString().split('.'); // 切割成整数和小数
 	var zs = arr[0],xs = arr[1] ? '.'+arr[1] : '';
