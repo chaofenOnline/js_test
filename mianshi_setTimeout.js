@@ -7,7 +7,7 @@ function fn(){
 		console.log(len);
 	}
 }
-
+ 
 // 输出 3210 -1-1-1-1
 闭包改良
 
