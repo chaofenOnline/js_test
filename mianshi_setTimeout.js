@@ -9,8 +9,7 @@ function fn(){
 }
  
 // 输出 3210 -1-1-1-1
-闭包改良
-
+// 闭包改良
 function fn(){
 	var len = 4;
 	while(len--){
