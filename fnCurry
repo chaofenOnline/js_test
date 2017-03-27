@@ -26,4 +26,26 @@ function add(){
 接收单一参数，因为要携带不少信息，因此常常以回调函数的理由来解决。
 将部分参数通过回调函数等方式传入函数中
 返回一个新函数，用于处理所有的想要传入的参数
- 
+
+
+
+柯里化通用式
+var currying = function(fn) {
+    var args = [].slice.call(arguments, 1);
+
+    return function() {
+        // 主要还是收集所有需要的参数到一个数组中，便于统一计算
+        var _args = args.concat([].slice.call(arguments));
+        return fn.apply(null, _args);
+    }
+}
+
+var sum = currying(function() {
+    var args = [].slice.call(arguments);
+    return args.reduce(function(a, b) {
+        return a + b;
+    })
+}, 10)
+
+console.log(sum(20, 10));  // 40
+console.log(sum(10, 5));   // 25
