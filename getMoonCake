@@ -1,0 +1,36 @@
+// 获取月饼 要拿到100个月饼,一次只能拿一个
+(function getMoonCakes(){
+    var index = 0,failCount = 0,moonCakes = []; // 获取到的月饼索引,失败次数,月饼集合
+    // 异步获取月饼方法
+    var _getMoonCake = function(){
+        return new Promise(function(resolve,reject){
+            // 通过随机数来模拟异步请求
+            Math.random() < 0.7 ? resolve(`月饼${++index}`) : setTimeout(function(){
+                reject(`获取月饼${++index}失败.`);
+            },1000)
+
+        })
+    }
+
+    // 获取100个月饼方法
+    var get100MoonCakes = function () {
+        return new Promise(function get(resolve,reject) {
+            _getMoonCake().then(function (data) {
+                moonCakes.push(data);
+                console.log('编号为 ',index,' 的月饼成功获取');
+                moonCakes.length < 100 ? get(resolve) : resolve(moonCakes);
+            },function () {
+                console.info('编号为 ',index,' 的月饼获取失败...');
+                failCount ++ ; // 获取失败的次数递增
+                get(resolve);
+            })
+        })
+    }
+
+    console.time('获取100个月饼花费时间');
+    get100MoonCakes().then(function (data) {
+        console.log('获取到的月饼为:',data);
+        console.log('共失败',failCount,'次。');
+        console.timeEnd('获取100个月饼花费时间');
+    })
+}())
