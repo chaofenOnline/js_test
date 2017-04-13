@@ -1,0 +1,83 @@
+var data={
+    "soft":"1111",
+    "soft.type":"1111",
+    "soft.condition":"1111",
+    "wonder":"1111",
+    "wonder.WONDER":"1111",
+    "wonder.WONDER.BS_TEST":"1111",
+    "wonder.WONDER.DB2数据类型":"1111",
+    "wonder.WONDER.DEP_TABLE":"1111",
+    "wonder.WONDER.DIC_TABLE":"1111",
+    "wonder.WONDER.TABLE8_NF":"1111",
+    "wonder.WONDER.基本信息":"1111",
+    "wonder.WONDER.姓名":"1111",
+    "wonder.WONDER.数据类型":"1111"
+}
+
+// 转为
+
+var result=[{
+    "name":"soft",
+    "val":"1111",
+    "children":[{
+        "name":"type",
+        "val":"1111",
+    },{
+        "name":"condition",
+        "val":"1111",
+    }]
+},{
+    "name":"wonder",
+    "val":"1111",
+    "children":[{
+        "name":"WONDER",
+        "val":"1111",
+        "children":[{
+            "name":"BS_TEST",
+            "val":"1111"
+        },{
+            "name":"DB2数据类型",
+            "val":"1111"
+        },{
+            "name":"DEP_TABLE",
+            "val":"1111"
+        },{
+            "name":"姓名",
+            "val":"1111"
+        },{
+            "name":"数据类型",
+            "val":"1111"
+        }]
+    }]
+}]
+
+
+var change = (data)=>{
+  var result = [],tmp = {},route,parent,val;
+  for(var item in data){
+    route = item.split('.');
+    val = {
+      "name":route[route.length-1],
+      "val":data[item]
+    };
+    parent = route.filter((e,i,arr)=>i<arr.length-1).join('.');
+    if(parent!=''){
+      tmp[parent] = tmp[parent] || result[result.push({})-1];
+      tmp[parent].children = tmp[parent].children || [];
+    }
+    if(item in tmp){
+      tmp[item].name = val.name;
+      tmp[item].val = val.val;
+    }else{
+      if(parent!=''){
+        tmp[item] = tmp[parent].children[tmp[parent].children.push(val)-1];
+      }else{
+        tmp[item] = tmp[item] || result[result.push(val)-1];
+      }
+    }
+  }
+  delete tmp;
+  return result;
+}
+
+
