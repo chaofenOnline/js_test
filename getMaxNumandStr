@@ -1,19 +1,20 @@
 function getMax(str){
-	str = str.split('').sort().join('')
+	str = str.split('').sort().join('');// 排序 保证字符顺序 aabbcc
 	var s = str.match(/(\w+)(\1)/g);// 获取出现2次以上
-	s = s.map(function(e){
+	if(s===null)return str[0]; // 没有2次以上直接返回首字母
+	s = s.map(function(e){ // 拼接上被正则截掉的首位字符
 		return e=e+e[0];
 	});
-	if(s===null)return str[0]; // 没有2次以上直接返回首字母
-	var out = s.sort(function(a,b){
+	var out = s.sort(function(a,b){ // 降序排序
 		return b.length -a.length;
 	})
 	console.log(out[0][0],out[0].length);
 }
 
 getMax('aaabbbbcddeefggggggggggghijjjggk')
-//g 13
 getMax('aaabbbbcddeefggggggggggghijjjk')
-//g 11
 getMax('aaabbggggggggbbcddeefggggggggggghijjjk')
-//g 19
+
+g 13
+g 11
+g 19
