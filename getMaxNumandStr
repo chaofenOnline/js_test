@@ -11,6 +11,24 @@ function getMax(str){
 	console.log(out[0][0],out[0].length);
 }
 
+// 常规
+function getMax(str){
+	var o = {};
+	for(var i in str){
+		if(o[str[i]]){
+			o[str[i]] ++;
+		}else{
+			o[str[i]] = 1;
+		}
+	}
+	var keys = Object.keys(o);
+	var values = Object.values(o);
+	var maxVal = Math.max.apply(Math,values);
+	console.log(keys[values.indexOf(maxVal)],maxVal);
+}
+
+
+
 getMax('aaabbbbcddeefggggggggggghijjjggk')
 getMax('aaabbbbcddeefggggggggggghijjjk')
 getMax('aaabbggggggggbbcddeefggggggggggghijjjk')
