@@ -1,0 +1,19 @@
+function getMax(str){
+	str = str.split('').sort().join('')
+	var s = str.match(/(\w+)(\1)/g);// 获取出现2次以上
+	s = s.map(function(e){
+		return e=e+e[0];
+	});
+	if(s===null)return str[0]; // 没有2次以上直接返回首字母
+	var out = s.sort(function(a,b){
+		return b.length -a.length;
+	})
+	console.log(out[0][0],out[0].length);
+}
+
+getMax('aaabbbbcddeefggggggggggghijjjggk')
+//g 13
+getMax('aaabbbbcddeefggggggggggghijjjk')
+//g 11
+getMax('aaabbggggggggbbcddeefggggggggggghijjjk')
+//g 19
