@@ -1,10 +1,13 @@
+1. 替换 > < 之间的空格为 &nbsp; 多少个空格就替换多少个&nbsp;
 var a = '{<br/>   <span style="color:#708">   }  <span style="color:#000">';
-
-// 替换 > < 之间的空格为 &nbsp; 多少个空格就替换多少个&nbsp;
-
 
 a.replace(/>(\s[^>]*)</g,function($0){
 	return $0.replace(/(\s)/g,'&nbsp;')
 })
 
 // "{<br/>&nbsp;&nbsp;&nbsp;<span style="color:#708">&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;<span style="color:#000">"
+
+2.移除所有标签，只留下innerText
+var html = "<p><a href='http://www.cnblogs.com/rubylouvre/'>Ruby Louvre</a>by <em>司徒正美</em></p>";
+html.replace(/<(?:.|\s)*?>/g, "");
+// Ruby Louvreby 司徒正美
