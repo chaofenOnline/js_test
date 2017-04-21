@@ -11,3 +11,7 @@ a.replace(/>(\s[^>]*)</g,function($0){
 var html = "<p><a href='http://www.cnblogs.com/rubylouvre/'>Ruby Louvre</a>by <em>司徒正美</em></p>";
 html.replace(/<(?:.|\s)*?>/g, "");
 // Ruby Louvreby 司徒正美
+
+3.获取url中最后的文件名称及后缀
+'http://www.1688.com/chanpin/-B1F0CAFBB7C0B5C1C3C5.html'.match(/[^/]+$/g)
+//["-B1F0CAFBB7C0B5C1C3C5.html"]
