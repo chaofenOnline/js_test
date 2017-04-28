@@ -1,0 +1,27 @@
+function fn(){
+	var i,j,
+		out = [],
+		args = [].slice.call(arguments),
+		len = args.length;
+	 	
+	for(i = 0 ; i<len ; ++i){
+		for(j = 0 ; j < args.length ; ++j){
+			if(args[j] && args[j][i]){
+			 	out[i]? Object.assign(out[i],args[j][i]):out[i] = args[j][i];
+			}
+	
+        	args[j].length - len > 0 && len ++;
+	
+		}
+	}
+		
+	return JSON.stringify(out);
+}
+
+a=[{a:1},{a:2},{a:3},{g:[1,2,3]},{h:123}]
+b=[{b:1},{b:2},{b:3}]
+c=[{c:1},{d:2},{e:3},{f:4}]
+d=[{g:5},{h:6}]
+fn(a,b,c,d)
+//
+"[{"a":1,"b":1,"c":1,"g":5},{"a":2,"b":2,"d":2,"h":6},{"a":3,"b":3,"e":3},{"g":[1,2,3],"f":4},{"h":123}]"
