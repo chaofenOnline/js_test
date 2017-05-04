@@ -15,3 +15,7 @@ html.replace(/<(?:.|\s)*?>/g, "");
 3.获取url中最后的文件名称及后缀
 'http://www.1688.com/chanpin/-B1F0CAFBB7C0B5C1C3C5.html'.match(/[^/]+$/g)
 //["-B1F0CAFBB7C0B5C1C3C5.html"]
+
+4. 获取斜杠后面内容
+  '/sadasdas/asdasdasd/123'.match(/[^/]+/g)
+   //["sadasdas", "asdasdasd", "123"]
