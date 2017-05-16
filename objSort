@@ -1,0 +1,6 @@
+Object {b: 2, a: 1}
+Object.keys(o).sort().reduce(function(obj,key){
+	obj[key] = o[key];
+	return obj;
+},{})
+Object {a: 1, b: 2}
