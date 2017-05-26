@@ -1,0 +1,14 @@
+// 生成节点
+        function render(list,dom) {
+            $.each(list,function (i,item) {
+                var $li = $('<li/>')
+                $li.append('<span>' + item.name + '</span>').appendTo(dom);
+                if(item.list){
+                    $li.append('<i/><ul/>');
+                    render(item.list,$li.children('ul').css("top", i * 25))
+                }
+            })
+            return dom;
+        }
+        // 插入节点
+        $this.append(render(list,$('<ul/>')));
