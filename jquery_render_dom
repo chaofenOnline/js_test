@@ -12,3 +12,4 @@
         }
         // 插入节点
         $this.append(render(list,$('<ul/>')));
+ 
