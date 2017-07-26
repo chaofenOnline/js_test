@@ -1,0 +1,7 @@
+function _sort(o){
+	var out = {};
+	Object.keys(o).sort((a,b)=>a.charCodeAt()-b.charCodeAt()).forEach(e=>{
+		out[e] = o[e]
+	})
+	return out;
+}
