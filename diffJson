@@ -1,0 +1,19 @@
+function _diff(a,b){
+  if(typeof a != typeof b || a.length != b.length)return false;
+  if(typeof a == 'object'){
+    for(var i in a){
+      if(typeof b[i] == 'undefined')return false;
+      if(!_diff(a[i],b[i]))return false;
+    }
+    return true;
+  }else{
+    return a === b;
+  }
+}
+
+_diff({a:2,b:2,c:{c1:1,c2:2,c3:{c3:333}}},{a:2,b:2,c:{c1:1,c2:2,c3:{c3:333,c4:444}}})
+//true
+_diff({a:2,a1:[{a1:1}],b:2,c:{c1:1,c2:2,c3:{c3:333,c4:444,c6:[1,2]}}},{a:2,a1:[{a1:2}],b:2,c:{c1:1,c2:2,c3:{c3:333,c4:444,c6:[1,2]}}})
+//false
+_diff({a:2,a1:[{a1:2}],b:2,c:{c1:1,c2:2,c3:{c3:333,c4:444,c6:[1,2]}}},{a:2,a1:[{a2:2}],b:2,c:{c1:1,c2:2,c3:{c3:333,c4:444,c6:[1,2]}}})
+//false
