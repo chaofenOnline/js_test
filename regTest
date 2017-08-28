@@ -19,3 +19,7 @@ html.replace(/<(?:.|\s)*?>/g, "");
 4. 获取斜杠后面内容
   '/sadasdas/asdasdasd/123'.match(/[^/]+/g)
    //["sadasdas", "asdasdasd", "123"]
+
+5. 获取倒数二级目录
+'http://blog.csdn.net/zaifendou/article/details/5746988'.match(/([^/]+)(?=\/)/g).pop()
+"details"
