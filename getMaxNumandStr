@@ -1,18 +1,8 @@
+
 var getMax = (str) => {
-	str = str.split('').sort().join('');// 排序 保证字符顺序 aabbcc
-	var s = str.match(/(\w+)(\1)/g);// 获取出现2次以上
-	if(s===null)return str[0]; // 没有2次以上直接返回首字母
-	s = s.map( e => e=e+e[0] );// 拼接上被正则截掉的首位字符
-	var out = s.sort((a,b) => b.length -a.length ) // 降序排序
-	console.log(out[0][0],out[0].length);
-}
-
-
-// 常规
-function getMax(str){
 	var o = {};
 	for(var i in str){
-		o[str[i]] ? o[str[i]]++ : o[str[i]] = 1; 
+	    o[str[i]] ? o[str[i]]++ : o[str[i]] = 1; 
 	}
 	var keys = Object.keys(o);
 	var values = Object.values(o);
