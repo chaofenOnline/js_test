@@ -1,2 +1,2 @@
-'/upload/images/aa.jpg'.match(/(\w+)\.\w+$/)[0]
+'/upload/images/aa.jpg'.match(/\w+\.\w+/)[0]
 "aa.jpg"
