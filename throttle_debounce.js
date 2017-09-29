@@ -19,17 +19,14 @@ window.onscroll = debounce(method,500)
 
 // 简易节流
 function throttle(fn,delay){
-	var timer,
-		start = new Date();
- 	return function(){
-		var now = new Date(), me = this, args = arguments;
-		clearTimeout(timer);
-		if(now - start >= delay){
-			fn.apply(me,args);
-			start = now;
-		}else{
-			timer = setTimeout(fn,delay)
-		}
+    var startTime = 0;
+    return function() {
+        var currTime = +new Date();
+        
+        if (currTime - statrTime > delay) {
+            action.apply(this, arguments);
+            statTime = currTime ;
+        }
     }
 }
 
