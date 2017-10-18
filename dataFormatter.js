@@ -12,3 +12,4 @@ function format1(x, y) {
  });
 }
 format1(new Date(), 'yy-M-d h:m:s'); // 17-10-14 22:14:41
+ 
