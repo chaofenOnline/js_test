@@ -11,7 +11,7 @@ function fn(str){
 	// 循环整数反序数组并且判断是3的倍数并且不是最后一位则加逗号
 	for(var i in zsArr){
 		out.push(zsArr[i]);
-		if( (i+1) % 3 === 0 && i != arr.length-1){
+		if( (i+1) % 3 === 0 && i != zsArr.length-1){
 			out.push(',');
 		}
 	}
@@ -20,9 +20,9 @@ function fn(str){
 }
 
 // 正则
-function regix(str){
-    //这里因为我需要两位小数所以做一个限制，你们看情况做小数位的限制
-    return (str || 0) && parseFloat(str).toFixed(2).toString().replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+function regix(str,dot_length){
+    //dot_length 为小数数量
+    return (str || 0) && parseFloat(str).toFixed(dot_length).toString().replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
 }
 
 '1234567'.replace(/(\d)(?=(\d{3})+$)/g, '$1,')
